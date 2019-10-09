@@ -14,15 +14,18 @@
         android:text="Password"
         app:layout_constraintBottom_toTopOf="@+id/btnLogIn"
         app:layout_constraintTop_toBottomOf="@+id/txtName"
-        tools:layout_editor_absoluteX="-16dp" />
+        app:layout_constraintVertical_bias="0.87"
+        tools:layout_editor_absoluteX="0dp" />
 
     <Button
         android:id="@+id/btnLogIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="472dp"
         android:text="Log In"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
@@ -32,6 +35,6 @@
         android:inputType="text"
         android:text="Name"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="177dp" />
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

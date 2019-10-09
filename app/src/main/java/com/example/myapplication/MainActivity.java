@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,11 +19,29 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG, "onCreate: Started.");
 
         Button btnLogIn = (Button)findViewById(R.id.btnLogIn);
+        final String Name = "phil";
+        final String Password = "password";
+
+
+
         btnLogIn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
+                TextView txtName = (TextView)findViewById(R.id.txtName);
+                TextView txtPassword = (TextView)findViewById(R.id.txtPassword);
                 Log.d(TAG, "BtnLogin Clicked!");
-                toastMessage("Clicked Button One");
+                String strName =   txtName.getText().toString();
+                String strPassword =   txtPassword.getText().toString();
+                if(strName.equals(Name) && strPassword.equals(Password) )
+                {
+                    toastMessage("Welcome. Name: "+ strName+ "   Password:" + strPassword);
+
+                }else
+                {
+                    toastMessage("Cannot log in! Name: "+ strName+ "   Password:" + strPassword);
+
+                }
+
             }
 
         });
