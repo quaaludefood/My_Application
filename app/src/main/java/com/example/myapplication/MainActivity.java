@@ -2,22 +2,42 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.sqlite.SQLiteAbortException;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.myapplication.Database.DBHelper;
+
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
+
+    SQLiteDatabase database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d(TAG, "onCreate: Started.");
 
+        SQLiteOpenHelper dbHelper = new DBHelper(this);
+        database = dbHelper.getWritableDatabase();
+        toastMessage("DB was created!");
+
+        /*************Below here is my original code******************/
         Button btnLogIn = (Button)findViewById(R.id.btnLogIn);
         final String Name = "phil";
         final String Password = "password";
@@ -29,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view){
                 TextView txtName = (TextView)findViewById(R.id.txtName);
                 TextView txtPassword = (TextView)findViewById(R.id.txtPassword);
-                Log.d(TAG, "BtnLogin Clicked!");
                 String strName =   txtName.getText().toString();
                 String strPassword =   txtPassword.getText().toString();
                 if(strName.equals(Name) && strPassword.equals(Password) )
